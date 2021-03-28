@@ -1,0 +1,20 @@
+call plug#begin('~/.vim/plugged')
+
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+
+call plug#end()
+
+" Always draw sign column. Prevent buffer moving when adding/deleting sign.
+set signcolumn=yes
+
+let g:LanguageClient_serverCommands = {
+		\ 'haskell': ['haskell-language-server-wrapper', '--lsp']
+    \ }
+
+let g:LanguageClient_loggingLevel = 'INFO'
+let g:LanguageClient_virtualTextPrefix = ''
+let g:LanguageClient_loggingFile =  expand('/tmp/LanguageClient-bug.log')
+let g:LanguageClient_serverStderr = expand('/tmp/LanguageServer-bug.log')
